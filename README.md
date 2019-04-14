@@ -19,20 +19,38 @@ Table of Contents
 Description
 ===========
 
-This fork of [mpx/lua-cjson](https://github.com/mpx/lua-cjson) is included in
-the [OpenResty](https://openresty.org/) bundle and includes a few bugfixes and
+This is TES3MP's fork of [OpenResty's fork](https://github.com/openresty/lua-cjson) of [mpx/lua-cjson](https://github.com/mpx/lua-cjson).
+
+OpenResty's fork is included in the [OpenResty](https://openresty.org/) bundle and includes a few bugfixes and
 improvements, especially to facilitate the encoding of empty tables as JSON Arrays.
 
+TES3MP's fork of that aims to gradually provide additional configuration options to replicate the functionality of
+the otherwise much slower [dkjson](http://dkolf.de/src/dkjson-lua.fsl/home).
+
 Please refer to the [lua-cjson documentation](http://www.kyne.com.au/~mark/software/lua-cjson.php)
-for standard usage, this README only provides informations regarding this fork's additions.
+for standard usage of the original project. This README only provides informations regarding the additions
+in the OpenResty and TES3MP forks.
 
 See [`mpx/master..openresty/master`](https://github.com/mpx/lua-cjson/compare/master...openresty:master)
 for the complete history of changes.
 
 [Back to TOC](#table-of-contents)
 
-Additions
-=========
+TES3MP Additions
+================
+
+decode_null_as_lightuserdata
+----------------------------
+**syntax:** `cjson.decode_null_as_lightuserdata(true|false)`
+
+By default, null values in JSON files are converted to NULL lightuserdata values.
+
+Setting this option to false makes them get converted to nil values instead.
+
+[Back to TOC](#table-of-contents)
+
+OpenResty Additions
+===================
 
 encode_empty_table_as_object
 ----------------------------
