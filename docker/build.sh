@@ -3,6 +3,7 @@ cd /tmp
 
 git clone --single-branch --branch MrFlutters-patch-1 https://github.com/MrFlutters/lua-cjson.git
 
+BUILD_THREADS=4
 LUAROCKS_VER=2.4.2
 LUA_DIR=/usr/local
 LUA_INCLUDE_DIR=$LUA_DIR/include/luajit-2.1/
@@ -10,7 +11,7 @@ LUA_SUFFIX=--lua-suffix=jit
 
 git clone -b v2.1-agentzh https://github.com/openresty/luajit2.git
 cd ./luajit2
-make -C src
+make -j $BUILD_THREADS -C src
 sudo make install
 cd ..
 
@@ -20,7 +21,7 @@ wget https://luarocks.github.io/luarocks/releases/luarocks-$LUAROCKS_VER.tar.gz
 tar -zxf luarocks-$LUAROCKS_VER.tar.gz
 cd luarocks-$LUAROCKS_VER
 ./configure --with-lua=$LUA_DIR --with-lua-include=$LUA_INCLUDE_DIR $LUA_SUFFIX
-make build
+make -j $BUILD_THREADS build
 sudo make install
 cd ../lua-cjson
 
