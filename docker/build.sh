@@ -30,4 +30,11 @@ sh runtests.sh
 make
 prove -Itests tests
 TEST_LUA_USE_VALGRIND=1 prove -Itests tests
-cp cjson.so /build/
+
+if [[ $? -eq 0 ]]
+    then
+        echo "Test Passed, Copying cjson to build."
+        cp cjson.so /build/
+    else
+        echo "Build Failed, cjson will not be copied."
+fi
