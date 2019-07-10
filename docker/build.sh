@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /tmp
 
-git clone --single-branch --branch MrFlutters-patch-1 https://github.com/MrFlutters/lua-cjson.git
+git clone --single-branch --branch docker_build https://github.com/MrFlutters/lua-cjson.git
 
 BUILD_THREADS=4
 LUAROCKS_VER=2.4.2
