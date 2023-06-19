@@ -1,7 +1,7 @@
-FROM debian:unstable-slim
+FROM arm32v7/ubuntu:22.04
 
 RUN apt update \
-    && apt install \
+    && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install \
         sudo \
         git \
         rename \
@@ -15,8 +15,8 @@ RUN apt update \
         valgrind \
         cpanminus \
         libipc-run3-perl \
-        lua5.1.0 \
-        lua5.1.0-dev \
+        lua5.1 \
+        liblua5.1-0-dev \
         -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
